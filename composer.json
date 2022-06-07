@@ -4,44 +4,24 @@
     "description": "user bundle",
     "license": "proprietary",
     "require": {
-        "php": ">=7.1.3",
+        "php": "^7.4",
+        "aws/aws-sdk-php": "^3.0",
+        "gaufrette/extras": "v0.1.0",
+        "knplabs/knp-gaufrette-bundle": "^0.7.1",
         "symfony/config": "^4.3",
         "symfony/dependency-injection": "^4.3",
         "symfony/framework-bundle": "^4.3",
         "symfony/serializer": "^4.3"
     },
     "require-dev": {
+        "phpunit/phpunit": "^8.0"
     },
     "config": {
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true,
-            "symfony/flex": true
-        },
-        "preferred-install": {
-            "*": "dist"
-        },
         "sort-packages": true
     },
     "autoload": {
         "psr-4": {
             "Glavnivc\\UserBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Glavnivc\\UserBundle\\Tests\\": "tests/"
-        }
-    },
-    "replace": {
-        "paragonie/random_compat": "2.*"
-    },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "4.4.*"
         }
     }
 }
