@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace Glavnivc\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,4 +16,14 @@ class TestController extends AbstractController
     {
         return new Response('ok');
     }
+
+    /**
+     * @Route("/profile", name="user.profile")
+     */
+    public function profile()
+    {
+        dump('profiled');
+        die();
+    }
+
 }
