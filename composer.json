@@ -8,6 +8,7 @@
         "aws/aws-sdk-php": "^3.0",
         "gaufrette/extras": "v0.1.0",
         "knplabs/knp-gaufrette-bundle": "^0.7.1",
+        "ramsey/uuid-doctrine": "^1.8",
         "symfony/config": "^4.3",
         "symfony/dependency-injection": "^4.3",
         "symfony/framework-bundle": "^4.3",
