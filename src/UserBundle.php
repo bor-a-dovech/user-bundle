@@ -2,26 +2,16 @@
 
 namespace Glavnivc\UserBundle;
 
-use Mchs\AccountBundle\DependencyInjection\AccountExtension;
+use Glavnivc\UserBundle\DependencyInjection\UserBundleExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class UserBundle extends Bundle
 {
-
-//    public function getContainerExtension() : AccountExtension
-//    {
-//        if ($this->extension === null) {
-//            $this->extension = new AccountExtension();
-//        }
-//        return $this->extension;
-//    }
-
-
-    public function test()
+    public function getContainerExtension() : UserBundleExtension
     {
-        echo "test";
-        die();
+        if ($this->extension === null) {
+            $this->extension = new UserBundleExtension();
+        }
+        return $this->extension;
     }
-
-
 }
