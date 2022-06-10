@@ -1,0 +1,197 @@
+{% extends '@User/page.html.twig' %}
+
+{% set title = 'Users view'|trans %}
+
+{% block head_title %}
+    head title
+{#    {% trans %}Users list{% endtrans%} | {% trans %}CHS service{% endtrans %}#}
+{% endblock %}
+
+{% block body_title %}<h3>{% trans %}Users list{% endtrans %}</h3>{% endblock %}
+
+{% block body_content %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {# Хлебные крошки #}
+            <div class="col-12">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumbs-list">
+                        <li class="breadcrumbs-item">
+                            <a class="breadcrumbs-link" href="/">{% trans %}Main page{% endtrans %}</a>
+                        </li>
+                        <li class="breadcrumbs-item breadcrumbs-item-active">
+                            {% trans %}Users{% endtrans %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {% block body_content_flash %}
+                {{ include('@User/flash.html.twig') }}
+            {% endblock %}
+
+            {# Заголовок и кнопка "добавить" #}
+            <div class="col-12">
+                <div class="title">
+                    <h1>{% trans %}Users view{% endtrans %}</h1>
+{#                    {% if is_granted('CHS chs add') %}#}
+{#                        <a href="{{ path('chs_add', { 'fromUrl': currentPath }) }}" class="button button-solid button-primary" type="button">#}
+{#                            {% trans %}Add chs{% endtrans %}#}
+{#                        </a>#}
+{#                    {% endif %}#}
+                </div>
+            </div>
+
+            {# скопированная инфа  #}
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="infoblock accent mb-16">
+                            <div class="infoblock-title">
+                                <h3>Данные пользователя</h3>
+                            </div>
+                            <div class="infoblock-content">
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="avatar avatar-80">
+                                                <img src="{{ asset('bundles/user/images/no-photo.svg') }}" alt="Фото профиля отсутствует"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Логин</strong></div>
+                                        <div class="col-8">
+                                            {{ user.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>ФИО</strong></div>
+                                        <div class="col-8">
+                                            {{ user.username }}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>E-mail</strong></div>
+                                        <div class="col-8">
+                                            {{ user.email }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="infoblock accent mb-16">
+                            <div class="infoblock-title">
+                                <h3>Персональные данные</h3>
+                            </div>
+                            <div class="infoblock-content">
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Имя</strong></div>
+                                        <div class="col-8">
+                                            {{ user.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Фамилия</strong></div>
+                                        <div class="col-8">
+                                            {{ user.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Отчество</strong></div>
+                                        <div class="col-8">
+                                            {{ user.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Подразделение</strong></div>
+                                        <div class="col-8">ГУ МЧС России по г. Москве</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Должность</strong></div>
+                                        <div class="col-8">Руководитель</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Дата рождения</strong></div>
+                                        <div class="col-8">19.01.2021</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="infoblock accent mb-16">
+                            <div class="infoblock-title">
+                                <h3>Контакты</h3>
+                            </div>
+                            <div class="infoblock-content">
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Телефон (моб.)</strong></div>
+                                        <div class="col-8">+79990000000</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Факс</strong></div>
+                                        <div class="col-8">-</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Телефон (раб. внутр.)</strong></div>
+                                        <div class="col-8">-</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Телефон (раб. внеш.)</strong></div>
+                                        <div class="col-8">-</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Телефон (раб. моб.)</strong></div>
+                                        <div class="col-8">-</div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Адрес</strong></div>
+                                        <div class="col-8">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+{% endblock %}
+
