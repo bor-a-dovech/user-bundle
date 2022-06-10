@@ -226,26 +226,24 @@
 
             </div>
 
-{#            {% if users|length >= env('HIDE_PAGE_NAVIGATION_IF_LESS_THAN')|default(15) %}#}
-{#                <div class="col-12">#}
-{#                    <div class="pagenav">#}
-{#                        <div class="row">#}
-{#                            <div class="col-12 col-xl-6">#}
-{#                                {{ include('helpers/pagenavCounter.html.twig', { 'entities': users } ) }}#}
-{#                                {{ include('helpers/pagenavResults.html.twig', {#}
-{#                                    'currentLimit': currentLimit,#}
-{#                                    'limitsList': limitsList#}
-{#                                } ) }}#}
-{#                            </div>#}
-{#                            <div class="col-12 col-xl-6">#}
-{#                                <div class="pagenav-pagination">#}
-{#                                    {{ knp_pagination_render(users) }}#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endif %}#}
+            <div class="col-12">
+                <div class="pagenav">
+                    <div class="row">
+                        <div class="col-12 col-xl-6">
+                            {{ include('@User/helpers/pagenavCounter.html.twig', { 'entities': users } ) }}
+                            {{ include('@User/helpers/pagenavResults.html.twig', {
+                                'currentLimit': currentLimit,
+                                'limitsList': limitsList
+                            } ) }}
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <div class="pagenav-pagination">
+                                {{ knp_pagination_render(users) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>

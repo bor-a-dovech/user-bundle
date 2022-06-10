@@ -5,6 +5,7 @@ namespace Glavnivc\UserBundle\Controller\Web;
 use Doctrine\ORM\EntityManagerInterface;
 use Glavnivc\UserBundle\Entity\User;
 use Glavnivc\UserBundle\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    const PAGINATION_LIMITS = [10, 30, 120];
+
     public function __construct(
         EntityManagerInterface $em
     )
@@ -31,12 +34,25 @@ class UserController extends AbstractController
      */
     public function list(
         Request $request,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        PaginatorInterface $paginator
     )
     {
-        $users = $userRepository->findAll();
+        $currentLimit = (int)$request->query->get('limit', self::PAGINATION_LIMITS[0]) ? : 1024;
+        $page = $request->query->getInt('page', 1);
+
+        $query = $userRepository->createQueryBuilder('u')->getQuery();
+
+        $users = $paginator->paginate(
+            $query,
+            $page,
+            $currentLimit,
+            []
+        );
         return [
             'users' => $users,
+            'currentLimit' => $currentLimit,
+            'limitsList' => self::PAGINATION_LIMITS,
         ];
 
     }
