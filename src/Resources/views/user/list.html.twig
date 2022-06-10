@@ -153,24 +153,24 @@
                                             <i class="icon icon-pencil"></i>
                                         </a>
 
-                                        <a class="td-link" href="{{ path('user_delete', { 'id': user.id, 'fromUrl': currentPath }) }}">
-                                            <i class="icon icon-trash"></i>
-                                        </a>
-
-
-{#                                        <a class="td-link"#}
-{#                                           data-toggle="modal"#}
-{#                                           data-target="#confirm-action"#}
-{#                                           data-href="{{ path('user_delete', {#}
-{#                                               'id': user.id,#}
-{#                                               'fromUrl': currentPath#}
-{#                                           }) }}"#}
-{#                                           data-body="Вы уверены, что хотите удалить пользователя {{ user.username }}?"#}
-{#                                           data-ok="{% trans %}Delete{% endtrans %}"#}
-{#                                           data-okclass="button-danger"#}
-{#                                        >#}
+{#                                        <a class="td-link" href="{{ path('user_delete', { 'id': user.id, 'fromUrl': currentPath }) }}">#}
 {#                                            <i class="icon icon-trash"></i>#}
 {#                                        </a>#}
+
+                                        <a class="td-link"
+                                           href="#"
+                                           data-toggle="modal"
+                                           data-target="#confirm-action"
+                                           data-href="{{ path('user_delete', {
+                                               'id': user.id,
+                                               'fromUrl': currentPath
+                                           }) }}"
+                                           data-body="Вы уверены, что хотите удалить пользователя {{ user.username }}?"
+                                           data-ok="{% trans %}Delete{% endtrans %}"
+                                           data-okclass="button-danger"
+                                        >
+                                            <i class="icon icon-trash"></i>
+                                        </a>
 
 
 
