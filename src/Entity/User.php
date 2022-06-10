@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * TODO: здесь нет имени, фамилии и данных профиля - упрощенный вариант
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="Glavnivc\UserBundle\Repository\UserRepository")
  */
 class User implements UserInterface
