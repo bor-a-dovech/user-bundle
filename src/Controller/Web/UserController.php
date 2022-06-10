@@ -131,4 +131,39 @@ class UserController extends AbstractController
         }
         return new Response($message);
     }
+
+    /**
+     * Создание нескольких тестовых пользователей.
+     * TODO: удалить
+     *
+     * @Route("/user/init/{count}", name="user_init_count")
+     */
+    public function initcount(int $count) : Response
+    {
+        $good = 0;
+        $bad = 0;
+        $words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+        $colors = ['red', 'green', 'blue', 'rose', 'purple', 'yellow', 'pink', 'aquamarine'];
+        for ($i = 0; $i < $count; $i++) {
+            $word = $words[array_rand($words)];
+            $color = $colors[array_rand($colors)];
+            $user = new User();
+            $user
+                ->setUsername('robot ' . $color . ' ' . $word . ' ' . $i)
+                ->setEmail('b-s-a' . rand(10000, 99999) . '@mail.ru')
+                ->setPassword('kek')
+            ;
+            try {
+                $this->em->persist($user);
+                $this->em->flush();
+                $good++;
+                $message = 'Создан пользователь <b>' . $user->getUsername() . '</b>';
+            } catch (\Exception $e) {
+                $bad++;
+                $message = '<b>Пользователя создать не удалось.</b><br>' . $e->getMessage();
+            }
+        }
+
+        return new Response($good . ' пользователей создано');
+    }
 }
