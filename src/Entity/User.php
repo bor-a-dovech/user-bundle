@@ -45,6 +45,11 @@ class User implements UserInterface
     private $data = [];
 
     /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $roles = [];
+
+    /**
      * Хэш пароля.
      * @var string
      * @ORM\Column(type="string")

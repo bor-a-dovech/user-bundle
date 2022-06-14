@@ -1,0 +1,27 @@
+{% extends '@User/page.html.twig' %}
+
+{% block title %}{{ 'Log in!'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{#    <style>{{ include('@User/css/sigin.css.twig') }}</style>#}
+{% endblock %}
+
+
+{% block body_class %}text-center{% endblock %}
+{% block body_content %}
+    <form class="form-signin" method="post" action="{{ path('user_check') }}">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputUsername" class="sr-only">{{ 'Login'|trans }}</label>
+        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus />
+        <label for="inputPassword" class="sr-only">{{ 'Password'|trans }}</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required />
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <input type="hidden" name="challenge" value="{% if challenge is defined %}{{ challenge }}{% endif %}">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'Sign in'|trans }}</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+    </form>>
+{% endblock %}

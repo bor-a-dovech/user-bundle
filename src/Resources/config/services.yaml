@@ -6,3 +6,19 @@ services:
     Glavnivc\UserBundle\:
         resource: '../../*'
         exclude: '../../{DependencyInjection,Entity,Migrations,Tests,Security/Event,Kernel.php}'
+
+    user_bundle.user.provider.entity:
+        alias: Glavnivc\UserBundle\Security\User\UserProvider
+
+    user_bundle.authenticator.login_form:
+        alias: Glavnivc\UserBundle\Security\Authenticator\LoginFormAuthenticator
+
+    user_bundle.handler.access_denied:
+        alias: Glavnivc\UserBundle\Security\AccessDeniedHandler
+
+    Glavnivc\UserBundle\Security\User\UserProvider:
+        class: Glavnivc\UserBundle\Security\User\UserProvider
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+            $classOrAlias: Glavnivc\UserBundle\Entity\User
+            $property: username
