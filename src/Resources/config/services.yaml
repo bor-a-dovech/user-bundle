@@ -22,3 +22,34 @@ services:
             $em: '@doctrine.orm.entity_manager'
             $classOrAlias: Glavnivc\UserBundle\Entity\User
             $property: username
+
+    Glavnivc\UserBundle\Security\Credentials\LocalCheckCredentialsService:
+        class: Glavnivc\UserBundle\Security\Credentials\LocalCheckCredentialsService
+        arguments:
+            $config: []
+
+    Glavnivc\UserBundle\Security\Permission\Provider\LocalPermissionProvider:
+        class: Glavnivc\UserBundle\Security\Permission\Provider\LocalPermissionProvider
+        arguments:
+            $config:
+                projectDir: '%kernel.project_dir%'
+                permissionsFile: "%env(string:LOCAL_PERMISSIONS_FILE)%"
+            $cache: '@cache.app'
+            $logger: '@logger'
+
+    Glavnivc\UserBundle\Security\Permission\Service\LocalPermissionService:
+        class: Glavnivc\UserBundle\Security\Permission\Service\LocalPermissionService
+        arguments:
+            $permissionProvider: '@user_bundle.permission.provider.local'
+            $checkCredentialsService: '@user_bundle.service.credentials.local'
+            $cache: '@cache.app'
+            $logger: '@logger'
+
+    user_bundle.permission.service.local:
+        alias: Glavnivc\UserBundle\Security\Permission\Service\LocalPermissionService
+
+    user_bundle.permission.provider.local:
+        alias: Glavnivc\UserBundle\Security\Permission\Provider\LocalPermissionProvider
+
+    user_bundle.service.credentials.local:
+        alias: Glavnivc\UserBundle\Security\Credentials\LocalCheckCredentialsService

@@ -3,6 +3,7 @@
 namespace Glavnivc\UserBundle\Controller\Web;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\PersistentCollection;
 use Glavnivc\UserBundle\Entity\User;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
@@ -195,7 +196,16 @@ class UserController extends AbstractController
     public function bsa(UserRepository $userRepository, RoleRepository $roleRepository)
     {
         $bsa = $userRepository->find('b916f6cf-335c-4335-a13a-93f2737e2547');
-//        $superAdminRole = $roleRepository->findBy(['name' => 'SUPER_ADMIN'])[0];
+        $superAdminRole = $roleRepository->findBy(['name' => 'SUPER_ADMIN'])[0];
+
+        /** @var PersistentCollection $bsaRoles */
+        $bsaRoles = $bsa->getRole();
+        die();
+
+        /** @var PersistentCollection $permissions */
+        $permissions = $superAdminRole->getPermissions();
+        dump($permissions->getValues());
+        die();
 //        $bsa->setRoles([
 //            'SUPER_ADMIN'
 //        ]);
