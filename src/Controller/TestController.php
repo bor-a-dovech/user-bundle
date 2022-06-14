@@ -3,6 +3,7 @@
 namespace Glavnivc\UserBundle\Controller;
 
 use Glavnivc\UserBundle\Entity\User;
+use Glavnivc\UserBundle\Repository\UserRepository;
 use Glavnivc\UserBundle\UserBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,4 +46,5 @@ class TestController extends AbstractController
         dump($encoded, $user);
         die();
     }
+
 }

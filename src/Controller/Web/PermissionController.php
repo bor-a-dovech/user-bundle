@@ -4,7 +4,6 @@ namespace Glavnivc\UserBundle\Controller\Web;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -15,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/user")
+ * @Route("/permission")
  */
-class UserController extends AbstractController
+class PermissionController extends AbstractController
 {
     const PAGINATION_LIMITS = [10, 30, 120];
 
@@ -185,24 +184,7 @@ class UserController extends AbstractController
                 $message = '<b>Пользователя создать не удалось.</b><br>' . $e->getMessage();
             }
         }
+
         return new Response($good . ' пользователей создано');
     }
-
-
-    /**
-     * @Route("/bsa", name="test_bsa")
-     */
-    public function bsa(UserRepository $userRepository, RoleRepository $roleRepository)
-    {
-        $bsa = $userRepository->find('b916f6cf-335c-4335-a13a-93f2737e2547');
-//        $superAdminRole = $roleRepository->findBy(['name' => 'SUPER_ADMIN'])[0];
-//        $bsa->setRoles([
-//            'SUPER_ADMIN'
-//        ]);
-//        $this->em->persist($bsa);
-//        $this->em->flush();
-        dump($bsa, $bsa->getRoles());
-        die();
-    }
-
 }

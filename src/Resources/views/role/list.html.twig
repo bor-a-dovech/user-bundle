@@ -1,14 +1,13 @@
 {% extends '@User/page.html.twig' %}
 
-{#{% set title = 'Users'|trans %}#}
-{% set title = 'Users list'|trans %}
+{% set title = 'Roles list'|trans %}
 
 {% block head_title %}
     head title
 {#    {% trans %}Users list{% endtrans%} | {% trans %}CHS service{% endtrans %}#}
 {% endblock %}
 
-{% block body_title %}<h3>{% trans %}Users list{% endtrans %}</h3>{% endblock %}
+{% block body_title %}<h3>{% trans %}Roles list{% endtrans %}</h3>{% endblock %}
 
 {% block body_content %}
 
@@ -23,7 +22,7 @@
                             <a class="breadcrumbs-link" href="/">{% trans %}Main page{% endtrans %}</a>
                         </li>
                         <li class="breadcrumbs-item breadcrumbs-item-active">
-                            {% trans %}Users{% endtrans %}
+                            {% trans %}Roles{% endtrans %}
                         </li>
                     </ul>
                 </div>
@@ -36,7 +35,7 @@
             {# Заголовок и кнопка "добавить" #}
             <div class="col-12">
                 <div class="title">
-                    <h1>{% trans %}Users list{% endtrans %}</h1>
+                    <h1>{% trans %}Roles list{% endtrans %}</h1>
 {#                    {% if is_granted('CHS chs add') %}#}
 {#                        <a href="{{ path('chs_add', { 'fromUrl': currentPath }) }}" class="button button-solid button-primary" type="button">#}
 {#                            {% trans %}Add chs{% endtrans %}#}
@@ -127,45 +126,33 @@
 {#            {% endif %}#}
 
             <div class="col-12">
-                {% if users|length > 0 %}
+                {% if roles|length > 0 %}
                     <div class="table-container">
                         <table class="table-empty-cells td-valign-top" data-fix-right-col="true">
                             <thead>
                             <th>{% trans %}id{% endtrans %}</th>
-                            <th>{% trans %}user login{% endtrans %}</th>
-                            <th>{% trans %}user email{% endtrans %}</th>
-                            <th>{% trans %}user roles{% endtrans %}</th>
-                            <th>{% trans %}user permissions{% endtrans %}</th>
+                            <th>{% trans %}role name{% endtrans %}</th>
+                            <th>{% trans %}role title{% endtrans %}</th>
+                            <th>{% trans %}role description{% endtrans %}</th>
                             <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                            {% for user in users %}
+                            {% for role in roles %}
                                 <tr>
-                                    <td>{{ user.id }}</td>
-                                    <td>{{ user.username }}</td>
-                                    <td>{{ user.email }}</td>
-                                    <td>
-                                        {% if user.roles %}
-                                            {% for role in user.roles %}
-                                                {{ role }}<br>
-                                            {% endfor %}
-                                        {% else %}
-                                            -
-                                        {% endif %}
-                                    </td>
-                                    <td>
-{#                                        {{ user.permissions }}#}
-                                    </td>
+                                    <td>{{ role.id }}</td>
+                                    <td>{{ role.name }}</td>
+                                    <td>{{ role.title }}</td>
+                                    <td>{{ role.description }}</td>
 
                                     <td class="text-right">
 
-                                        <a class="td-link" href="{{ path('user_view', { 'id': user.id, 'fromUrl': currentPath }) }}">
-                                            <i class="icon icon-eye"></i>
-                                        </a>
+{#                                        <a class="td-link" href="{{ path('role_view', { 'id': role.id, 'fromUrl': currentPath }) }}">#}
+{#                                            <i class="icon icon-eye"></i>#}
+{#                                        </a>#}
 
-                                        <a class="td-link" href="{{ path('user_edit', { 'id': user.id, 'fromUrl': currentPath }) }}">
-                                            <i class="icon icon-pencil"></i>
-                                        </a>
+{#                                        <a class="td-link" href="{{ path('role_edit', { 'id': role.id, 'fromUrl': currentPath }) }}">#}
+{#                                            <i class="icon icon-pencil"></i>#}
+{#                                        </a>#}
 
 {#                                        <a class="td-link" href="{{ path('user_delete', { 'id': user.id, 'fromUrl': currentPath }) }}">#}
 {#                                            <i class="icon icon-trash"></i>#}
@@ -175,11 +162,11 @@
                                            href="#"
                                            data-toggle="modal"
                                            data-target="#confirm-action"
-                                           data-href="{{ path('user_delete', {
-                                               'id': user.id,
+                                           data-href="{{ path('role_delete', {
+                                               'id': role.id,
                                                'fromUrl': currentPath
                                            }) }}"
-                                           data-body="Вы уверены, что хотите удалить пользователя {{ user.username }}?"
+                                           data-body="Вы уверены, что хотите удалить роль {{ role.name }}?"
                                            data-ok="{% trans %}Delete{% endtrans %}"
                                            data-okclass="button-danger"
                                         >
@@ -244,7 +231,7 @@
                 <div class="pagenav">
                     <div class="row">
                         <div class="col-12 col-xl-6">
-                            {{ include('@User/helpers/pagenavCounter.html.twig', { 'entities': users } ) }}
+                            {{ include('@User/helpers/pagenavCounter.html.twig', { 'entities': roles } ) }}
                             {{ include('@User/helpers/pagenavResults.html.twig', {
                                 'currentLimit': currentLimit,
                                 'limitsList': limitsList
@@ -252,7 +239,7 @@
                         </div>
                         <div class="col-12 col-xl-6">
                             <div class="pagenav-pagination">
-                                {{ knp_pagination_render(users) }}
+                                {{ knp_pagination_render(roles) }}
                             </div>
                         </div>
                     </div>
