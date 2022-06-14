@@ -10,6 +10,7 @@
         "symfony/config": "^4.3",
         "symfony/dependency-injection": "^4.3",
         "symfony/framework-bundle": "^4.3",
+        "symfony/security-bundle": "^4.4",
         "symfony/serializer": "^4.3"
     },
     "require-dev": {
