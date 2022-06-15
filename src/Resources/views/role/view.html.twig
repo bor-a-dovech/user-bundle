@@ -101,6 +101,32 @@
 
                         <div class="infoblock accent mb-16">
                             <div class="infoblock-title">
+                                <h3>Пермишны</h3>
+                            </div>
+                            <div class="infoblock-content">
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            {% if role.permissions.values is not empty %}
+                                                <ul>
+
+                                                    {% for permission in role.permissions.values %}
+                                                        <li>
+                                                            {{ permission.name }}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                (нет)
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infoblock accent mb-16">
+                            <div class="infoblock-title">
                                 <h3>Пользователи с этой ролью</h3>
                             </div>
                             <div class="infoblock-content">

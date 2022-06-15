@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Glavnivc\UserBundle\Entity\Permission;
 use Glavnivc\UserBundle\Entity\Role;
 use Glavnivc\UserBundle\Entity\User;
+use Glavnivc\UserBundle\Form\Type\RoleType;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -77,9 +78,28 @@ class RoleController extends AbstractController
      * @Template("@User/role/edit.html.twig")
      *
      */
-    public function edit(Role $role)
+    public function edit(
+        Role $role,
+        Request $request
+    )
     {
+
+        $form = $this->createForm(RoleType::class, $role);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() and $form->isValid()) {
+            /** @var $role Role */
+            $role = $form->getData();
+            $this->em->persist($role);
+            $this->em->flush();
+            $this->addFlash('success', 'Role has been saved.');
+            $redirectUrl = (($request->query->get('fromUrl'))
+                ?
+                : $this->generateUrl('role_list')
+            );
+            return $this->redirect($redirectUrl);
+        }
         return [
+            'form' => $form->createView(),
             'role' => $role,
         ];
 
@@ -113,12 +133,10 @@ class RoleController extends AbstractController
     public function view(Role $role, UserRepository $userRepository)
     {
         $users = $userRepository->findWithRole($role);
-        // TODO: список пользователей, у которых есть эта роль
         return [
             'role' => $role,
             'users' => $users,
         ];
-
     }
 
     /**
