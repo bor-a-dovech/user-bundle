@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="permission")
  * @ORM\Entity(repositoryClass="Glavnivc\UserBundle\Repository\PermissionRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Permission
 {

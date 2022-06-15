@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="Glavnivc\UserBundle\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface
 {

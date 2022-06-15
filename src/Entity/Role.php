@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="role")
  * @ORM\Entity(repositoryClass="Glavnivc\UserBundle\Repository\RoleRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Role
 {
