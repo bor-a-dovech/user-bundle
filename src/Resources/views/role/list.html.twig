@@ -134,6 +134,7 @@
                             <th>{% trans %}role name{% endtrans %}</th>
                             <th>{% trans %}role title{% endtrans %}</th>
                             <th>{% trans %}role description{% endtrans %}</th>
+                            <th>{% trans %}role permissions{% endtrans %}</th>
                             <th>&nbsp;</th>
                             </thead>
                             <tbody>
@@ -143,6 +144,18 @@
                                     <td>{{ role.name }}</td>
                                     <td>{{ role.title }}</td>
                                     <td>{{ role.description }}</td>
+                                    <td>
+                                        {% if role.permissions.values is not empty %}
+                                            <ul>
+                                            {% for permission in role.permissions.values %}
+                                                <li>
+                                                    {{ permission.name }}
+                                                </li>
+                                            {% endfor %}
+                                            </ul>
+                                        {% endif %}
+
+                                    </td>
 
                                     <td class="text-right">
 

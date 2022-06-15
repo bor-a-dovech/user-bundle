@@ -112,6 +112,7 @@ class RoleController extends AbstractController
      */
     public function view(Role $role)
     {
+        // TODO: список пользователей, у которых есть эта роль
         return [
             'role' => $role,
         ];
