@@ -110,11 +110,13 @@ class RoleController extends AbstractController
      * @Route("/{id}/view", name="role_view")
      * @Template("@User/role/view.html.twig")
      */
-    public function view(Role $role)
+    public function view(Role $role, UserRepository $userRepository)
     {
+        $users = $userRepository->findWithRole($role);
         // TODO: список пользователей, у которых есть эта роль
         return [
             'role' => $role,
+            'users' => $users,
         ];
 
     }
