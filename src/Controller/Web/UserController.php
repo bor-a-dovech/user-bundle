@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\PersistentCollection;
 use Glavnivc\UserBundle\Entity\Role;
 use Glavnivc\UserBundle\Entity\User;
+use Glavnivc\UserBundle\Form\Type\UserType;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
 use Glavnivc\UserBundle\Service\UserRightsService;
@@ -82,12 +83,26 @@ class UserController extends AbstractController
      * @Template("@User/user/edit.html.twig")
      *
      */
-    public function edit(User $user)
+    public function edit(User $user, Request $request)
     {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() and $form->isValid()) {
+            /** @var $user User */
+            $user = $form->getData();
+            $this->em->persist($user);
+            $this->em->flush();
+            $this->addFlash('success', 'User has been saved.');
+            $redirectUrl = (($request->query->get('fromUrl'))
+                ?
+                : $this->generateUrl('user_list')
+            );
+            return $this->redirect($redirectUrl);
+        }
         return [
+            'form' => $form->createView(),
             'user' => $user,
         ];
-
     }
 
     /**

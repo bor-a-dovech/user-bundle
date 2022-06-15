@@ -111,6 +111,13 @@ class User implements UserInterface
         return $this;
     }
 
+    public function setRole(array $roles): self
+    {
+        $this->role = $roles;
+        return $this;
+    }
+
+
     public function getPassword(): string
     {
         return (string)$this->password;

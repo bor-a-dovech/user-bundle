@@ -145,9 +145,9 @@
                                     <td>{{ user.username }}</td>
                                     <td>{{ user.email }}</td>
                                     <td>
-                                        {% if user.roles %}
-                                            {% for role in user.roles %}
-                                                {{ role }}<br>
+                                        {% if user.role.values %}
+                                            {% for role in user.role.values %}
+                                                {{ role.name }}<br>
                                             {% endfor %}
                                         {% else %}
                                             -
