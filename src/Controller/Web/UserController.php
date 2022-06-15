@@ -2,11 +2,14 @@
 
 namespace Glavnivc\UserBundle\Controller\Web;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\PersistentCollection;
+use Glavnivc\UserBundle\Entity\Role;
 use Glavnivc\UserBundle\Entity\User;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
+use Glavnivc\UserBundle\Service\UserRightsService;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -113,11 +116,18 @@ class UserController extends AbstractController
      * @Route("/{id}/view", name="user_view")
      * @Template("@User/user/view.html.twig")
      */
-    public function view(User $user)
+    public function view(User $user, UserRightsService $userRightsService)
     {
+
+        $rolesValues = $userRightsService->getRolesValues($user);
+        $permissionsValues = $userRightsService->getPermissionsValues($user);
+
         return [
             'user' => $user,
+            'roles' => $rolesValues,
+            'permissions' => $permissionsValues,
         ];
+
 
     }
 

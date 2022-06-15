@@ -140,7 +140,9 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 col-lg-6">
+
                         <div class="infoblock accent mb-16">
                             <div class="infoblock-title">
                                 <h3>Контакты</h3>
@@ -184,6 +186,44 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="infoblock accent mb-16">
+                            <div class="infoblock-title">
+                                <h3>Права доступа</h3>
+                            </div>
+                            <div class="infoblock-content">
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Роли</strong></div>
+                                        <div class="col-8">
+                                            {% if roles is not empty %}
+                                                <ul>
+                                                {% for role in roles %}
+                                                    <li>{{ role }}</li>
+                                                {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Пермишны</strong></div>
+                                        <div class="col-8">
+                                            {% if permissions is not empty %}
+                                                <ul>
+                                                    {% for permission in permissions %}
+                                                        <li>{{ permission }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
