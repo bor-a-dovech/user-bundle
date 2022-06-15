@@ -4,7 +4,7 @@ namespace Glavnivc\UserBundle\Security\Voter;
 
 
 use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Security\Permission\Service\PermissionServiceInterface;
+use Glavnivc\UserBundle\Security\Rights\CheckRightsServiceInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
@@ -16,11 +16,12 @@ class PageVoter extends Voter
 
     public function __construct(
         AccessDecisionManagerInterface $decisionManager,
-        PermissionServiceInterface $permissionService
+        CheckRightsServiceInterface $checkRightsService
+
     )
     {
-        $this->permissionService = $permissionService;
         $this->decisionManager = $decisionManager;
+        $this->checkRightsService = $checkRightsService;
     }
 
     protected function supports($attribute, $subject)
@@ -33,14 +34,12 @@ class PageVoter extends Voter
         if($attribute=="IS_AUTHENTICATED_ANONYMOUSLY"){
             return true;
         }
-
         /** @var User $user */
         $user = $token->getUser();
         if (!$user instanceof User) {
             return false;
         }
-
-        $result = $this->permissionService->hasUserPermission($user,$attribute);
+        $result = $this->checkRightsService->hasPermission($user,$attribute);
         return $result;
     }
 
