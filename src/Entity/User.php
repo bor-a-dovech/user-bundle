@@ -3,6 +3,7 @@
 namespace Glavnivc\UserBundle\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -98,7 +99,7 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function getRole()
+    public function getRole() : Collection
     {
         return $this->role;
     }
