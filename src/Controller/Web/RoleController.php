@@ -91,7 +91,7 @@ class RoleController extends AbstractController
             $role = $form->getData();
             $this->em->persist($role);
             $this->em->flush();
-            $this->addFlash('success', 'Role has been saved.');
+            $this->addFlash('success', 'Роль сохранена.');
             $redirectUrl = (($request->query->get('fromUrl'))
                 ?
                 : $this->generateUrl('role_list')
@@ -117,7 +117,7 @@ class RoleController extends AbstractController
     {
         $this->em->remove($role);
         $this->em->flush();
-        $this->addFlash('success', 'Role has been deleted.');
+        $this->addFlash('success', 'Роль удалена.');
         $redirectUrl = (($request->query->get('fromUrl'))
             ?
             : $this->generateUrl('role_list')

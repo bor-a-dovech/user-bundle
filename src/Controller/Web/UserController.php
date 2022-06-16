@@ -92,7 +92,7 @@ class UserController extends AbstractController
             $user = $form->getData();
             $this->em->persist($user);
             $this->em->flush();
-            $this->addFlash('success', 'User has been saved.');
+            $this->addFlash('success', 'Пользователь сохранен.');
             $redirectUrl = (($request->query->get('fromUrl'))
                 ?
                 : $this->generateUrl('user_list')
@@ -118,7 +118,7 @@ class UserController extends AbstractController
         // event
         $this->em->remove($user);
         $this->em->flush();
-        $this->addFlash('success', 'User has been deleted.');
+        $this->addFlash('success', 'Пользователь удален.');
         $redirectUrl = (($request->query->get('fromUrl'))
             ?
             : $this->generateUrl('user_list')

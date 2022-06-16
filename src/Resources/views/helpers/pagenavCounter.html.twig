@@ -2,5 +2,5 @@
     {% set num = entities.paginationData.current %}
     {% set all = entities.paginationData.last %}
 
-    {{ 'Page %num% of %all%'|trans|replace({ '%num%': num, '%all%': all }) }}
+    {{ 'Стр. %num% из %all%'|trans|replace({ '%num%': num, '%all%': all }) }}
 </div>

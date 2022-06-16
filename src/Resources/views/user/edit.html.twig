@@ -1,7 +1,6 @@
 {% extends '@User/page.html.twig' %}
 
-{#{% set title = 'Users'|trans %}#}
-{% set title = 'Users edit'|trans %}
+{% set title = 'Редактирование пользователя'|trans %}
 
 {% block head_title %}
     head title
@@ -16,12 +15,12 @@
             'widget': 'form',
             'type': 'submit',
             'name': 'submit',
-            'value': 'Save',
+            'value': 'Сохранить',
             'class': 'button-solid button-primary mr-16'
         },
         {
             'widget': 'link',
-            'value': 'Cancel',
+            'value': 'Отмена',
             'class': 'button-solid button-secondary',
             'path': app.request.get('fromUrl') ?? path('chs_list')
         },
@@ -35,10 +34,13 @@
                 <div class="breadcrumbs">
                     <ul class="breadcrumbs-list">
                         <li class="breadcrumbs-item">
-                            <a class="breadcrumbs-link" href="/">{% trans %}Main page{% endtrans %}</a>
+                            <a class="breadcrumbs-link" href="/">{% trans %}Главная{% endtrans %}</a>
+                        </li>
+                        <li class="breadcrumbs-item">
+                            <a class="breadcrumbs-link" href="{{ path('user_list') }}">{% trans %}Пользователи{% endtrans %}</a>
                         </li>
                         <li class="breadcrumbs-item breadcrumbs-item-active">
-                            {% trans %}Users{% endtrans %}
+                            {% trans %}Редактирование{% endtrans %}
                         </li>
                     </ul>
                 </div>
@@ -51,12 +53,7 @@
             {# Заголовок и кнопка "добавить" #}
             <div class="col-12">
                 <div class="title">
-                    <h1>{% trans %}Users edit{% endtrans %}</h1>
-{#                    {% if is_granted('CHS chs add') %}#}
-{#                        <a href="{{ path('chs_add', { 'fromUrl': currentPath }) }}" class="button button-solid button-primary" type="button">#}
-{#                            {% trans %}Add chs{% endtrans %}#}
-{#                        </a>#}
-{#                    {% endif %}#}
+                    <h1>{{ user.fio ?? user.username }}</h1>
                 </div>
             </div>
 

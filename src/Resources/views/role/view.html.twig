@@ -1,13 +1,13 @@
 {% extends '@User/page.html.twig' %}
 
-{% set title = 'Role view'|trans %}
+{% set title = 'Просмотр роли'|trans %}
 
 {% block head_title %}
-    head title
+    Просмотр роли
 {#    {% trans %}Users list{% endtrans%} | {% trans %}CHS service{% endtrans %}#}
 {% endblock %}
 
-{% block body_title %}<h3>{% trans %}Role view{% endtrans %}</h3>{% endblock %}
+{% block body_title %}<h3>{% trans %}Просмотр роли{% endtrans %}</h3>{% endblock %}
 
 {% block body_content %}
 
@@ -19,10 +19,13 @@
                 <div class="breadcrumbs">
                     <ul class="breadcrumbs-list">
                         <li class="breadcrumbs-item">
-                            <a class="breadcrumbs-link" href="/">{% trans %}Main page{% endtrans %}</a>
+                            <a class="breadcrumbs-link" href="/">{% trans %}Главная{% endtrans %}</a>
+                        </li>
+                        <li class="breadcrumbs-item">
+                            <a class="breadcrumbs-link" href="{{ path('role_list') }}">{% trans %}Роли{% endtrans %}</a>
                         </li>
                         <li class="breadcrumbs-item breadcrumbs-item-active">
-                            {% trans %}Roles{% endtrans %}
+                            {% trans %}Просмотр{% endtrans %}
                         </li>
                     </ul>
                 </div>
@@ -35,12 +38,7 @@
             {# Заголовок и кнопка "добавить" #}
             <div class="col-12">
                 <div class="title">
-                    <h1>{% trans %}Roles view{% endtrans %}</h1>
-{#                    {% if is_granted('CHS chs add') %}#}
-{#                        <a href="{{ path('chs_add', { 'fromUrl': currentPath }) }}" class="button button-solid button-primary" type="button">#}
-{#                            {% trans %}Add chs{% endtrans %}#}
-{#                        </a>#}
-{#                    {% endif %}#}
+                    <h1>{% trans %}Просмотр роли{% endtrans %}</h1>
                 </div>
             </div>
 

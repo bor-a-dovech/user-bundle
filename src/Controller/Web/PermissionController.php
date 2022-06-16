@@ -87,7 +87,7 @@ class PermissionController extends AbstractController
             $permission = $form->getData();
             $this->em->persist($permission);
             $this->em->flush();
-            $this->addFlash('success', 'Permission has been saved.');
+            $this->addFlash('success', 'Пермишн сохранен.');
             $redirectUrl = (($request->query->get('fromUrl'))
                 ?
                 : $this->generateUrl('role_list')
@@ -114,7 +114,7 @@ class PermissionController extends AbstractController
     {
         $this->em->remove($permission);
         $this->em->flush();
-        $this->addFlash('success', 'Permission has been deleted.');
+        $this->addFlash('success', 'Пермишн удален.');
         $redirectUrl = (($request->query->get('fromUrl'))
             ?: $this->generateUrl('permission_list')
         );

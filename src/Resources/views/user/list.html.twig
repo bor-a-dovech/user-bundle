@@ -1,14 +1,12 @@
 {% extends '@User/page.html.twig' %}
 
-{#{% set title = 'Users'|trans %}#}
-{% set title = 'Users list'|trans %}
+{% set title = 'Список пользователей'|trans %}
 
 {% block head_title %}
-    head title
-{#    {% trans %}Users list{% endtrans%} | {% trans %}CHS service{% endtrans %}#}
+    Список пользователей
 {% endblock %}
 
-{% block body_title %}<h3>{% trans %}Users list{% endtrans %}</h3>{% endblock %}
+{% block body_title %}<h3>{% trans %}Список пользователей{% endtrans %}</h3>{% endblock %}
 
 {% block body_content %}
 
@@ -20,10 +18,10 @@
                 <div class="breadcrumbs">
                     <ul class="breadcrumbs-list">
                         <li class="breadcrumbs-item">
-                            <a class="breadcrumbs-link" href="/">{% trans %}Main page{% endtrans %}</a>
+                            <a class="breadcrumbs-link" href="/">{% trans %}Главная{% endtrans %}</a>
                         </li>
                         <li class="breadcrumbs-item breadcrumbs-item-active">
-                            {% trans %}Users{% endtrans %}
+                            {% trans %}Пользователи{% endtrans %}
                         </li>
                     </ul>
                 </div>
@@ -37,11 +35,6 @@
             <div class="col-12">
                 <div class="title">
                     <h1>{% trans %}Users list{% endtrans %}</h1>
-{#                    {% if is_granted('CHS chs add') %}#}
-{#                        <a href="{{ path('chs_add', { 'fromUrl': currentPath }) }}" class="button button-solid button-primary" type="button">#}
-{#                            {% trans %}Add chs{% endtrans %}#}
-{#                        </a>#}
-{#                    {% endif %}#}
                 </div>
             </div>
 
@@ -51,106 +44,22 @@
                 </div>
             </div>
 
-            {# кнопка показа/скрытия фильтров #}
-{#            <div class="col-12">#}
-{#                <div class="d-flex align-items-start justify-content-end mb-24">#}
-{#                    <button type="button" class="button button-icon" data-toggle-filter data-filter="#filter">#}
-{#                        <i class="icon icon-filters"></i>#}
-{#                    </button>#}
-{#                </div>#}
-{#            </div>#}
-
-            {# фильтры #}
-{#            {% if filterForm is defined %}#}
-{#                <div class="col-12">#}
-{#                    {% set filtersClass = (filtersIsEmpty is defined and filtersIsEmpty == true) ? ' d-none' : '' %}#}
-{#                    {% set filterFormView = filterForm.createView %}#}
-{#                    <div class="filter{{ filtersClass }}" id="filter">#}
-{#                        {{ form_start(filterFormView) }}#}
-{#                        {{ form_errors(filterFormView) }}#}
-{#                        <div class="row pb-24">#}
-{#                            <div class="col-2">#}
-{#                                <div class="field">#}
-{#                                    <div class="field-icon field-icon-prefix">#}
-{#                                        <i class="icon icon-search field-icon-start"></i>#}
-{#                                        {{ form_widget(filterFormView.name) }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-2">#}
-{#                                <div class="field">#}
-{#                                    <div class="field-icon field-icon-prefix">#}
-{#                                        <i class="icon icon-search field-icon-start"></i>#}
-{#                                        {{ form_widget(filterFormView.zone) }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-2">#}
-{#                                <div class="field">#}
-{#                                    <div class="field-icon field-icon-prefix">#}
-{#                                        <i class="icon icon-search field-icon-start"></i>#}
-{#                                        {{ form_widget(filterFormView.externalCode) }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-2">#}
-{#                                <div class="field">#}
-{#                                    <div class="field-icon field-icon-prefix">#}
-{#                                        <i class="icon icon-search field-icon-start"></i>#}
-{#                                        {{ form_widget(filterFormView.regionCode) }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-2">#}
-{#                                <div class="field">#}
-{#                                    <div class="field-icon field-icon-prefix">#}
-{#                                        <i class="icon icon-search field-icon-start"></i>#}
-{#                                        {{ form_widget(filterFormView.status) }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-2">#}
-{#                                <div class="field">#}
-{#                                    <div class="field-icon field-icon-prefix">#}
-{#                                        <i class="icon icon-search field-icon-start"></i>#}
-{#                                        {{ form_widget(filterFormView.character) }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-2 pt-8">#}
-{#                                {{ form_widget(filterFormView.submit) }}#}
-{#                                {% if not filtersIsEmpty %}#}
-{#                                    <span class="ml-16">#}
-{#                                            {{ form_widget(filterFormView.reset) }}#}
-{#                                        </span>#}
-{#                                {% endif %}#}
-{#                            </div>#}
-{#                        </div>#}
-
-{#                        {{ form_end(filterFormView, { render_rest: false } ) }}#}
-{#                    </div>#}
-{#                </div>#}
-{#            {% endif %}#}
-
             <div class="col-12">
                 {% if users|length > 0 %}
                     <div class="table-container">
                         <table class="table-empty-cells td-valign-top" data-fix-right-col="true">
                             <thead>
-{#                            <th>{% trans %}id{% endtrans %}</th>#}
-                            <th>{% trans %}user login{% endtrans %}</th>
-                            <th>{% trans %}user email{% endtrans %}</th>
-                            <th>{% trans %}user fio{% endtrans %}</th>
-                            <th>{% trans %}user workplace{% endtrans %}</th>
-                            <th>{% trans %}user duty{% endtrans %}</th>
-                            <th>{% trans %}user roles{% endtrans %}</th>
-{#                            <th>{% trans %}user permissions{% endtrans %}</th>#}
+                            <th>{% trans %}Логин{% endtrans %}</th>
+                            <th>{% trans %}E-mail{% endtrans %}</th>
+                            <th>{% trans %}ФИО{% endtrans %}</th>
+                            <th>{% trans %}Место работы{% endtrans %}</th>
+                            <th>{% trans %}Должность{% endtrans %}</th>
+                            <th>{% trans %}Роли{% endtrans %}</th>
                             <th>&nbsp;</th>
                             </thead>
                             <tbody>
                             {% for user in users %}
                                 <tr>
-{#                                    <td>{{ user.id }}</td>#}
                                     <td>{{ user.username }}</td>
                                     <td>{{ user.email }}</td>
                                     <td>{{ user.fio }}</td>
@@ -165,9 +74,6 @@
                                             -
                                         {% endif %}
                                     </td>
-{#                                    <td>#}
-{#                                        {{ user.permissions }}#}
-{#                                    </td>#}
 
                                     <td class="text-right">
 
@@ -178,10 +84,6 @@
                                         <a class="td-link" href="{{ path('user_edit', { 'id': user.id, 'fromUrl': currentPath }) }}">
                                             <i class="icon icon-pencil"></i>
                                         </a>
-
-{#                                        <a class="td-link" href="{{ path('user_delete', { 'id': user.id, 'fromUrl': currentPath }) }}">#}
-{#                                            <i class="icon icon-trash"></i>#}
-{#                                        </a>#}
 
                                         <a class="td-link"
                                            href="#"
@@ -198,35 +100,6 @@
                                             <i class="icon icon-trash"></i>
                                         </a>
 
-
-
-{#                                        {% if is_granted('CHS chs view') %}#}
-{#                                            <a class="td-link" href="{{ path('chs_view', { 'id': chs.id, 'fromUrl': currentPath }) }}">#}
-{#                                                <i class="icon icon-eye"></i>#}
-{#                                            </a>#}
-{#                                        {% endif %}#}
-{#                                        {% if is_granted('CHS chs edit') %}#}
-{#                                            <a class="td-link" href="{{ path('chs_edit', { 'id': chs.id, 'fromUrl': currentPath }) }}">#}
-{#                                                <i class="icon icon-pencil"></i>#}
-{#                                            </a>#}
-{#                                        {% endif %}#}
-{#                                        {% if is_granted('CHS chs delete') %}#}
-{#                                            <a class="td-link"#}
-{#                                               data-toggle="modal"#}
-{#                                               data-target="#confirm-action"#}
-{#                                               data-href="{{ path('chs_delete', {#}
-{#                                                   'id': chs.id,#}
-{#                                                   'fromUrl': currentPath#}
-{#                                               }) }}"#}
-{#                                               data-body="Вы уверены, что хотите удалить ЧС<br>&laquo;{{ chs.name|raw }}&raquo;?"#}
-{#                                               data-ok="{% trans %}Delete{% endtrans %}"#}
-{#                                               data-okclass="button-danger"#}
-{#                                            >#}
-{#                                                <i class="icon icon-trash"></i>#}
-{#                                            </a>#}
-{#                                        {% endif %}#}
-
-
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -235,19 +108,6 @@
                     </div>
                 {% else %}
                     {% trans %}The list is empty.{% endtrans %}
-{#                    {% if not canSeeSomething %}#}
-{#                        <div class="alert alert-danger" role="alert" style="width:50%;">#}
-{#                            {% trans %}User has no region.{% endtrans %}#}
-{#                        </div>#}
-{#                    {% else %}#}
-{#                        <p class="mb-0 mt-3">#}
-{#                            {% if ((filtersIsEmpty is not defined) or (filtersIsEmpty == true)) %}#}
-{#                                {% trans %}The list is empty.{% endtrans %}#}
-{#                            {% else %}#}
-{#                                {% trans %}No results found.{% endtrans %}#}
-{#                            {% endif %}#}
-{#                        </p>#}
-{#                    {% endif %}#}
                 {% endif %}
 
             </div>

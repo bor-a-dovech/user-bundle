@@ -29,8 +29,8 @@ class UserListener
         $id = $options['id'] ?? null;
         $menu = $event->getMenu();
 
-        $menu->addChild('Users list menu caption', ['route' => 'user_list']);
-        $menu->addChild('Roles list menu caption', ['route' => 'role_list']);
-        $menu->addChild('Permissions list menu caption', ['route' => 'permission_list']);
+        $menu->addChild('Пользователи', ['route' => 'user_list']);
+        $menu->addChild('Роли', ['route' => 'role_list']);
+        $menu->addChild('Пермишны', ['route' => 'permission_list']);
     }
 }
