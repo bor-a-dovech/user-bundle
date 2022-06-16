@@ -45,6 +45,12 @@
                 </div>
             </div>
 
+            <div class="col-12">
+                <div class="tabnav">
+                    {{ knp_menu_render('user.list', {'currentAsLink': false, 'template': '@User/menu/tab.html.twig' }) }}
+                </div>
+            </div>
+
             {# кнопка показа/скрытия фильтров #}
 {#            <div class="col-12">#}
 {#                <div class="d-flex align-items-start justify-content-end mb-24">#}

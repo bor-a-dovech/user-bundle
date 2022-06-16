@@ -53,3 +53,10 @@ services:
 
     user_bundle.service.credentials.local:
         alias: Glavnivc\UserBundle\Security\Credentials\LocalCheckCredentialsService
+
+    # menu
+    Glavnivc\UserBundle\Provider\MenuProvider:
+        arguments: ['@knp_menu.factory', '@event_dispatcher']
+        tags: ['knp_menu.provider']
+    Glavnivc\UserBundle\Event\Listener\Menu\UserListener:
+        tags: [{ name: kernel.event_listener, event: 'app.menu.user.list', method: onMenu }]
