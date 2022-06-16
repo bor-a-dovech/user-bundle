@@ -74,6 +74,58 @@ class User implements UserInterface
      */
     private $role;
 
+
+
+    // переменные профиля
+
+    /**
+     * Имя пользователя.
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $name = null;
+
+    /**
+     * Фамилия пользователя.
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $lastname = null;
+
+    /**
+     * Отчество пользователя.
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $patronymic = null;
+
+    /**
+     * Место работы.
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $workplace = null;
+
+    /**
+     * Должность.
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $duty = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTime
+     */
+    private $birthdate = null;
+
+    /**
+     * Номер телефона.
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $phone = null;
+
     ///
     /// геттеры и сеттеры
     ///
@@ -254,5 +306,94 @@ class User implements UserInterface
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    ////////////////////////////////////////////
+    /// геттеры и сеттеры для профиля
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $value): self
+    {
+        $this->name = $value;
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(?string $value): self
+    {
+        $this->lastname = $value;
+        return $this;
+    }
+
+    public function getPatronymic(): ?string
+    {
+        return $this->patronymic;
+    }
+
+    public function setPatronymic(?string $value): self
+    {
+        $this->patronymic = $value;
+        return $this;
+    }
+
+    public function getWorkplace(): ?string
+    {
+        return $this->workplace;
+    }
+
+    public function setWorkplace(?string $value): self
+    {
+        $this->workplace = $value;
+        return $this;
+    }
+
+    public function getDuty(): ?string
+    {
+        return $this->duty;
+    }
+
+    public function setDuty(?string $value): self
+    {
+        $this->duty = $value;
+        return $this;
+    }
+
+    public function getBirthdate(): ?DateTime
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?DateTime $value): self
+    {
+        $this->birthdate = $value;
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $value): self
+    {
+        $this->phone = $value;
+        return $this;
+    }
+
+    public function getFio() : ?string
+    {
+        $fio = null;
+        if ($lastname = $this->getLastname()) {
+            $fio = implode(' ', [$this->getLastname(), $this->getName(), $this->getPatronymic()]);
+        }
+        return $fio;
     }
 }

@@ -8,6 +8,7 @@ use Glavnivc\UserBundle\Repository\PermissionRepository;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -36,8 +37,65 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'E-mail',
+                    'readonly' => 'readonly',
                 ],
             ])
+
+            ->add('name', TextType::class, [
+                'label' => 'Имя',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Имя',
+                ],
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Фамилия',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Фамилия',
+                ],
+            ])
+            ->add('patronymic', TextType::class, [
+                'label' => 'Отчество',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Отчество',
+                ],
+            ])
+            ->add('workplace', TextType::class, [
+                'label' => 'Место работы',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Место работы',
+                ],
+            ])
+            ->add('duty', TextType::class, [
+                'label' => 'Должность',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Должность',
+                ],
+            ])
+            ->add('birthdate', DateType::class, [
+                'format' => 'dd.MM.yyyy',
+
+                'label' => 'Дата рождения',
+                'required' => false,
+                'widget' => 'single_text',
+                'attr' => [
+                    'placeholder' => 'ДД.ММ.ГГГГ',
+                    'data-calendar' => true,
+                ],
+            ])
+            ->add('phone', TextType::class, [
+                'label' => 'Номер телефона',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Номер телефона',
+                ],
+            ])
+
+
             ->add('role', ChoiceType::class, [
                 'label' => 'Роли',
                 'choice_label' => function ($choice, $key, $value) {

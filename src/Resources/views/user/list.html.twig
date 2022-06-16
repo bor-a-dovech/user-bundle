@@ -131,19 +131,25 @@
                     <div class="table-container">
                         <table class="table-empty-cells td-valign-top" data-fix-right-col="true">
                             <thead>
-                            <th>{% trans %}id{% endtrans %}</th>
+{#                            <th>{% trans %}id{% endtrans %}</th>#}
                             <th>{% trans %}user login{% endtrans %}</th>
                             <th>{% trans %}user email{% endtrans %}</th>
+                            <th>{% trans %}user fio{% endtrans %}</th>
+                            <th>{% trans %}user workplace{% endtrans %}</th>
+                            <th>{% trans %}user duty{% endtrans %}</th>
                             <th>{% trans %}user roles{% endtrans %}</th>
-                            <th>{% trans %}user permissions{% endtrans %}</th>
+{#                            <th>{% trans %}user permissions{% endtrans %}</th>#}
                             <th>&nbsp;</th>
                             </thead>
                             <tbody>
                             {% for user in users %}
                                 <tr>
-                                    <td>{{ user.id }}</td>
+{#                                    <td>{{ user.id }}</td>#}
                                     <td>{{ user.username }}</td>
                                     <td>{{ user.email }}</td>
+                                    <td>{{ user.fio }}</td>
+                                    <td>{{ user.workplace }}</td>
+                                    <td>{{ user.duty }}</td>
                                     <td>
                                         {% if user.role.values %}
                                             {% for role in user.role.values %}
@@ -153,9 +159,9 @@
                                             -
                                         {% endif %}
                                     </td>
-                                    <td>
+{#                                    <td>#}
 {#                                        {{ user.permissions }}#}
-                                    </td>
+{#                                    </td>#}
 
                                     <td class="text-right">
 

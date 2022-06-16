@@ -48,6 +48,7 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 col-lg-6">
+
                         <div class="infoblock accent mb-16">
                             <div class="infoblock-title">
                                 <h3>Данные пользователя</h3>
@@ -72,15 +73,6 @@
                                 </div>
                                 <div class="infoblock-row">
                                     <div class="row">
-                                        <div class="col-4"><strong>ФИО</strong></div>
-                                        <div class="col-8">
-                                            {{ user.username }}
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
                                         <div class="col-4"><strong>E-mail</strong></div>
                                         <div class="col-8">
                                             {{ user.email }}
@@ -88,102 +80,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-                        <div class="infoblock accent mb-16">
-                            <div class="infoblock-title">
-                                <h3>Персональные данные</h3>
-                            </div>
-                            <div class="infoblock-content">
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Имя</strong></div>
-                                        <div class="col-8">
-                                            {{ user.username }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Фамилия</strong></div>
-                                        <div class="col-8">
-                                            {{ user.username }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Отчество</strong></div>
-                                        <div class="col-8">
-                                            {{ user.username }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Подразделение</strong></div>
-                                        <div class="col-8">ГУ МЧС России по г. Москве</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Должность</strong></div>
-                                        <div class="col-8">Руководитель</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Дата рождения</strong></div>
-                                        <div class="col-8">19.01.2021</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-6">
-
-                        <div class="infoblock accent mb-16">
-                            <div class="infoblock-title">
-                                <h3>Контакты</h3>
-                            </div>
-                            <div class="infoblock-content">
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Телефон (моб.)</strong></div>
-                                        <div class="col-8">+79990000000</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Факс</strong></div>
-                                        <div class="col-8">-</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Телефон (раб. внутр.)</strong></div>
-                                        <div class="col-8">-</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Телефон (раб. внеш.)</strong></div>
-                                        <div class="col-8">-</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Телефон (раб. моб.)</strong></div>
-                                        <div class="col-8">-</div>
-                                    </div>
-                                </div>
-                                <div class="infoblock-row">
-                                    <div class="row">
-                                        <div class="col-4"><strong>Адрес</strong></div>
-                                        <div class="col-8">-</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -198,9 +94,9 @@
                                         <div class="col-8">
                                             {% if roles is not empty %}
                                                 <ul>
-                                                {% for role in roles %}
-                                                    <li>{{ role }}</li>
-                                                {% endfor %}
+                                                    {% for role in roles %}
+                                                        <li>{{ role }}</li>
+                                                    {% endfor %}
                                                 </ul>
                                             {% endif %}
                                         </div>
@@ -223,6 +119,83 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+
+                        <div class="infoblock accent mb-16">
+                            <div class="infoblock-title">
+                                <h3>Персональные данные</h3>
+                            </div>
+
+                            <div class="infoblock-row">
+                                <div class="row">
+                                    <div class="col-4"><strong>Фамилия</strong></div>
+                                    <div class="col-8">
+                                        {{ user.lastname ?? '-' }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="infoblock-content">
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Имя</strong></div>
+                                        <div class="col-8">
+                                            {{ user.name ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Отчество</strong></div>
+                                        <div class="col-8">
+                                            {{ user.patronymic ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Подразделение</strong></div>
+                                        <div class="col-8">
+                                            {{ user.workplace ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Должность</strong></div>
+                                        <div class="col-8">
+                                            {{ user.duty ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Дата рождения</strong></div>
+                                        <div class="col-8">
+                                            {% if user.birthdate is not null %}
+                                                {{ user.birthdate|date('d.m.Y') }}
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infoblock-row">
+                                    <div class="row">
+                                        <div class="col-4"><strong>Номер телефона</strong></div>
+                                        <div class="col-8">
+                                            {{ user.phone ?? '-' }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
 
                     </div>
                 </div>
