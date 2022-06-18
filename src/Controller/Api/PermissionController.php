@@ -2,11 +2,12 @@
 
 namespace Glavnivc\UserBundle\Controller\Api;
 
-use App\Normalizer\PermissionNormalizer;
 use Doctrine\ORM\EntityManagerInterface;
 use Glavnivc\UserBundle\Entity\Permission;
+use Glavnivc\UserBundle\Normalizer\PermissionNormalizer;
 use Glavnivc\UserBundle\Repository\PermissionRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
+use Glavnivc\UserBundle\Service\ResultJsonService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,14 +24,20 @@ class PermissionController extends AbstractController
     const PAGINATION_LIMITS = [10, 30, 120];
 
     public function __construct(
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        ResultJsonService $resultJsonService,
+        PermissionRepository $permissionRepository
+
     )
     {
         $this->em = $em;
+        $this->resultJsonService = $resultJsonService;
+        $this->permissionRepository = $permissionRepository;
     }
 
     /**
      * @Route("/list", name="api_permission_list", methods={"GET"})
+     * @Route("/", name="rest_api_permission_list", methods={"GET"})
      *
      * @param Request $request
      * @param UserRepository $userRepository
@@ -68,22 +75,20 @@ class PermissionController extends AbstractController
     /**
      * Удаление пермишна.
      *
-     * @Route("/{id}/delete", name="api_permission_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="api_permission_delete", methods={"GET"})
+     * @Route("/{id}", name="rest_api_permission_delete", methods={"DELETE"})
      */
     public function delete(Permission $permission) : JsonResponse
     {
         $this->em->remove($permission);
         $this->em->flush();
-        $result = [
-            'result' => 'ok',
-        ];
-        return new JsonResponse($result);
-
+        return new JsonResponse($this->resultJsonService->ok());
     }
 
     /**
      * Просмотр карточки пермишна.
      * @Route("/{id}/view", name="api_permission_view", methods={"GET"})
+     * @Route("/{id}", name="rest_api_permission_view", methods={"GET"})
      */
     public function view(Permission $permission) : JsonResponse
     {
@@ -93,5 +98,43 @@ class PermissionController extends AbstractController
         );
         $result = $serializer->normalize($permission);
         return new JsonResponse($result);
+    }
+
+    /**
+     * Добавление пермишна.
+     *
+     * @Route("/add", name="api_permission_add", methods={"POST"})
+     * @Route("/", name="rest_api_permission_add", methods={"POST"})
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function add(Request $request) : JsonResponse
+    {
+        $post = $request->query;
+        $name = $post->get('name');
+        if (!$name) {
+            $message = "Required field: 'name'";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        if ($this->permissionRepository->findBy(['name' => $name])) {
+            $message = "Permission with name '" . $name . "' already exists.";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        $permission = (new Permission())
+            ->setName($name)
+            ->setTitle(
+                $post->get('title')
+            )
+            ->setDescription(
+                $post->get('description')
+            )
+        ;
+        $this->em->persist($permission);
+        $this->em->flush();
+        return new JsonResponse([
+            'result' => 'ok',
+            'id' => $permission->getId(),
+        ]);
     }
 }

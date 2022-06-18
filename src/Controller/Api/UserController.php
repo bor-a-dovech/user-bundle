@@ -8,10 +8,12 @@ use Doctrine\ORM\PersistentCollection;
 use Glavnivc\UserBundle\Entity\Role;
 use Glavnivc\UserBundle\Entity\User;
 use Glavnivc\UserBundle\Form\Type\UserType;
+use Glavnivc\UserBundle\Normalizer\PermissionNormalizer;
 use Glavnivc\UserBundle\Normalizer\RoleNormalizer;
 use Glavnivc\UserBundle\Normalizer\UserNormalizer;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
+use Glavnivc\UserBundle\Service\ResultJsonService;
 use Glavnivc\UserBundle\Service\UserRightsService;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Util\Json;
@@ -34,15 +36,20 @@ class UserController extends AbstractController
 
     public function __construct(
         EntityManagerInterface $em,
-        UserPasswordEncoderInterface $encoder
+        UserPasswordEncoderInterface $encoder,
+        ResultJsonService $resultJsonService,
+        UserRepository $userRepository
     )
     {
         $this->em = $em;
         $this->userPasswordEncoder = $encoder;
+        $this->resultJsonService = $resultJsonService;
+        $this->userRepository = $userRepository;
     }
 
     /**
-     * @Route("/list", name="api_user_list")
+     * @Route("/list", name="api_user_list", methods={"GET"})
+     * @Route("/", name="rest_api_user_list")
      * @param Request $request
      * @param UserRepository $userRepository
      */
@@ -77,33 +84,103 @@ class UserController extends AbstractController
     /**
      * Удаление пользователя.
      *
-     * @Route("/{id}/delete", name="user_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="api_user_delete", methods={"GET"})
+     * @Route("/{id}", name="rest_api_user_delete", methods={"DELETE"})
      */
     public function delete(User $user)
     {
         $this->em->remove($user);
         $this->em->flush();
-        $result = [
-            'result' => 'ok',
-        ];
-        return new JsonResponse($result);
+        return new JsonResponse($this->resultJsonService->ok(), Response::HTTP_OK);
     }
 
     /**
      * Просмотр карточки пользователя.
      * @Route("/{id}/view", name="api_user_view", methods={"GET"})
+     * @Route("/{id}", name="rest_api_user_view", methods={"GET"})
      */
     public function view(User $user, UserRightsService $userRightsService) : JsonResponse
     {
         $serializer = new Serializer(
-            [new UserNormalizer()],
+            [new UserNormalizer(), new RoleNormalizer(), new PermissionNormalizer()],
             [new JsonEncoder()]
         );
         $result = $serializer->normalize($user);
-        $rolesValues = $userRightsService->getRolesValues($user);
-        $permissionsValues = $userRightsService->getPermissionsValues($user);
-        $result['roles'] = array_values($rolesValues);
-        $result['permissions'] = array_values($permissionsValues);
+        $roles = $userRightsService->getRoles($user);
+        if ($roles) {
+            foreach ($roles as $role) {
+                $result['roles'][] = $serializer->normalize($role);
+            }
+        }
         return new JsonResponse($result);
     }
+
+    /**
+     * Добавление нового пользователя.
+     *
+     * @Route("/add", name="api_user_add", methods={"POST"})
+     * @Route("/", name="rest_api_user_add", methods={"POST"})
+     */
+    public function add(Request $request, UserPasswordEncoderInterface $encoder) : JsonResponse
+    {
+        $post = $request->query;
+        $username = $post->get('username');
+        $email = $post->get('email');
+        $password = $post->get('password');
+        if (!$username or !$email or !$password) {
+            $message = "Required fields: 'username', 'email', 'password'";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        $birthdate = null;
+        if ($birthday = $post->get('birthdate')) {
+            try {
+                $birthdate = new \DateTime($birthday);
+            } catch (\Exception $e) {
+                $message = "Can not parse date '" . $birthday . "'";
+                return new JsonResponse($this->resultJsonService->error($message));
+            }
+        }
+        if ($this->userRepository->findBy(['username' => $username])) {
+            $message = "User with username '" . $username . "' already exists.";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        if ($this->userRepository->findBy(['email' => $email])) {
+            $message = "User with email '" . $email . "' already exists.";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        $user = (new User)
+            ->setUsername($username)
+            ->setEmail($email)
+            ->setName(
+                $post->get('name')
+            )
+            ->setLastname(
+                $post->get('lastname')
+            )
+            ->setPatronymic(
+                $post->get('patronymic')
+            )
+            ->setWorkplace(
+                $post->get('workplace')
+            )
+            ->setDuty(
+                $post->get('duty')
+            )
+            ->setPhone(
+                $post->get('phone')
+            )
+            ->setBirthdate(
+                $birthdate
+            )
+       ;
+        $encoded = $encoder->encodePassword($user, $password);
+        $user->setPassword($encoded);
+        $this->em->persist($user);
+        $this->em->flush();
+        return new JsonResponse([
+            'result' => 'ok',
+            'id' => $user->getId(),
+        ]);
+    }
+
 }

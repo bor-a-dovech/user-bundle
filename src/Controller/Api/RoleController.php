@@ -7,7 +7,9 @@ use Glavnivc\UserBundle\Entity\Role;
 use Glavnivc\UserBundle\Normalizer\RoleNormalizer;
 use Glavnivc\UserBundle\Repository\RoleRepository;
 use Glavnivc\UserBundle\Repository\UserRepository;
+use Glavnivc\UserBundle\Service\ResultJsonService;
 use Knp\Component\Pager\PaginatorInterface;
+use PHPUnit\Util\Json;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,24 +26,27 @@ class RoleController extends AbstractController
     const PAGINATION_LIMITS = [10, 30, 120];
 
     public function __construct(
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        ResultJsonService $resultJsonService,
+        RoleRepository $roleRepository
     )
     {
         $this->em = $em;
+        $this->resultJsonService = $resultJsonService;
+        $this->roleRepository = $roleRepository;
     }
 
     /**
-     * @Route("/list", name="api_role_list")
-     * @Template("@User/role/list.html.twig")
+     * Список ролей.
      *
-     * @param Request $request
-     * @param UserRepository $userRepository
+     * @Route("/list", name="api_role_list", methods={"GET"})
+     * @Route("/", name="rest_api_role_list", methods={"GET"})
      */
     public function list(
         Request $request,
         RoleRepository $roleRepository,
         PaginatorInterface $paginator
-    )
+    ) : JsonResponse
     {
         $serializer = new Serializer(
             [new RoleNormalizer()],
@@ -68,23 +73,22 @@ class RoleController extends AbstractController
     /**
      * Удаление роли.
      *
-     * @Route("/{id}/delete", name="api_role_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="api_role_delete", methods={"GET"})
+     * @Route("/{id}", name="rest_api_role_delete", methods={"DELETE"})
      */
     public function delete(Role $role)
     {
         $this->em->remove($role);
         $this->em->flush();
-        $result = [
-            'result' => 'ok',
-        ];
-        return new JsonResponse($result);
+        return new JsonResponse($this->resultJsonService->ok());
     }
 
     /**
      * Просмотр карточки роли.
      * @Route("/{id}/view", name="api_role_view", methods={"GET"})
+     * @Route("/{id}", name="rest_api_role_view", methods={"GET"})
      */
-    public function view(Role $role, UserRepository $userRepository) : JsonResponse
+    public function view(Role $role) : JsonResponse
     {
         $serializer = new Serializer(
             [new RoleNormalizer()],
@@ -92,5 +96,43 @@ class RoleController extends AbstractController
         );
         $result = $serializer->normalize($role);
         return new JsonResponse($result);
+    }
+
+    /**
+     * Добавление новой роли.
+     *
+     * @Route("/add", name="api_role_add", methods={"POST"})
+     * @Route("/", name="rest_api_role_add", methods={"POST"})
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function add(Request $request) : JsonResponse
+    {
+        $post = $request->query;
+        $name = $post->get('name');
+        if (!$name) {
+            $message = "Required field: 'name'";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        if ($this->roleRepository->findBy(['name' => $name])) {
+            $message = "Role with name '" . $name . "' already exists.";
+            return new JsonResponse($this->resultJsonService->error($message));
+        }
+        $role = (new Role())
+            ->setName($name)
+            ->setTitle(
+                $post->get('title')
+            )
+            ->setDescription(
+                $post->get('description')
+            )
+        ;
+        $this->em->persist($role);
+        $this->em->flush();
+        return new JsonResponse([
+            'result' => 'ok',
+            'id' => $role->getId(),
+        ]);
     }
 }
