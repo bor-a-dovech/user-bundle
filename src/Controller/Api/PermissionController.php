@@ -137,4 +137,32 @@ class PermissionController extends AbstractController
             'id' => $permission->getId(),
         ]);
     }
+
+    /**
+     * Редактирование пермишна.
+     *
+     * @Route("/{id}", name="rest_api_permission_put", methods={"PUT"})
+     *
+     * @param Permission $permission
+     * @return JsonResponse
+     */
+    public function put(Permission $permission, Request $request) : JsonResponse
+    {
+        $post = $request->query;
+        $name = $post->get('name');
+        if (!is_null($name)) {
+            $permission->setName($name ?: null);
+        }
+        $title = $post->get('title');
+        if (!is_null($title)) {
+            $permission->setTitle($title ?: null);
+        }
+        $description = $post->get('description');
+        if (!is_null($description)) {
+            $permission->setDescription($description ?: null);
+        }
+        $this->em->persist($permission);
+        $this->em->flush();
+        return new JsonResponse($this->resultJsonService->ok());
+    }
 }

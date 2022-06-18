@@ -183,4 +183,59 @@ class UserController extends AbstractController
         ]);
     }
 
+
+    /**
+     * Редактирование пользователя.
+     *
+     * @Route("/{id}", name="rest_api_user_put", methods={"PUT"})
+     *
+     * @param User $user
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function put(User $user, Request $request) : JsonResponse
+    {
+        $post = $request->query;
+        $name = $post->get('name');
+        if (!is_null($name)) {
+            $user->setName($name ?: null);
+        }
+        $lastname = $post->get('lastname');
+        if (!is_null($lastname)) {
+            $user->setLastname($lastname ?: null);
+        }
+        $patronymic = $post->get('patronymic');
+        if (!is_null($patronymic)) {
+            $user->setPatronymic($patronymic ?: null);
+        }
+        $workplace = $post->get('workplace');
+        if (!is_null($workplace)) {
+            $user->setWorkplace($workplace ?: null);
+        }
+        $duty = $post->get('duty');
+        if (!is_null($duty)) {
+            $user->setDuty($duty ?: null);
+        }
+        $phone = $post->get('phone');
+        if (!is_null($phone)) {
+            $user->setPhone($phone ?: null);
+        }
+        $birthday = $post->get('birthdate');
+        if (!is_null($birthday)) {
+            if ($birthday) {
+                try {
+                    $birthdate = new \DateTime($birthday);
+                } catch (\Exception $e) {
+                    $message = "Can not parse date '" . $birthday . "'";
+                    return new JsonResponse($this->resultJsonService->error($message));
+                }
+                $user->setBirthdate($birthdate);
+            } else {
+                $user->setBirthdate(null);
+            }
+        }
+        $this->em->persist($user);
+        $this->em->flush();
+        return new JsonResponse($this->resultJsonService->ok());
+    }
 }

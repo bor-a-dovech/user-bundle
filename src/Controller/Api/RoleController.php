@@ -135,4 +135,32 @@ class RoleController extends AbstractController
             'id' => $role->getId(),
         ]);
     }
+
+    /**
+     * Редактирование роли.
+     *
+     * @Route("/{id}", name="rest_api_role_put", methods={"PUT"})
+     *
+     * @param Role $role
+     * @return JsonResponse
+     */
+    public function put(Role $role, Request $request) : JsonResponse
+    {
+        $post = $request->query;
+        $name = $post->get('name');
+        if (!is_null($name)) {
+            $role->setName($name ?: null);
+        }
+        $title = $post->get('title');
+        if (!is_null($title)) {
+            $role->setTitle($title ?: null);
+        }
+        $description = $post->get('description');
+        if (!is_null($description)) {
+            $role->setDescription($description ?: null);
+        }
+        $this->em->persist($role);
+        $this->em->flush();
+        return new JsonResponse($this->resultJsonService->ok());
+    }
 }
