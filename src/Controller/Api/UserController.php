@@ -49,7 +49,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/list", name="api_user_list", methods={"GET"})
-     * @Route("/", name="rest_api_user_list")
+     * @Route("/", name="rest_api_user_list", methods={"GET"})
      * @param Request $request
      * @param UserRepository $userRepository
      */
