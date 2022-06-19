@@ -15,14 +15,25 @@ class CheckRightsService implements CheckRightsServiceInterface
         $this->userRightService = $userRightsService;
     }
 
+    /**
+     * Есть ли у юзера пермишн.
+     *
+     * @param UserInterface $user
+     * @param string $permissionName Пешмишн роута.
+     * @return bool
+     */
     public function hasPermission(UserInterface $user, string $permissionName): bool
     {
-        // TODO: проверка на суперглобальные пермишны
         // TODO: нужно ли проверять credentials?
-        $userPermissions = (($user instanceof User)
-            ? $this->userRightService->getPermissionsValues($user)
-            : []
-        );
+        if (!($user instanceof User)) {
+            return false;
+        }
+        $rolesText = $this->userRightService->getRolesValues($user);
+        $permissionsText = $this->userRightService->getPermissionsValues($user);
+        $isSuperAdmin = (isset($rolesText['ROLE_SUPER_ADMIN']) or isset($permissionsText['can everything']));
+        if ($isSuperAdmin) {
+            return true;
+        }
         return isset($userPermissions[$permissionName]);
     }
 
