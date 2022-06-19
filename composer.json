@@ -5,12 +5,13 @@
     "license": "proprietary",
     "require": {
         "php": "^7.3",
-        "aws/aws-sdk-php": "^3.0",
-        "gaufrette/extras": "v0.1.0",
-        "knplabs/knp-gaufrette-bundle": "^0.7.1",
+        "knplabs/knp-menu-bundle": "^3.2",
+        "knplabs/knp-paginator-bundle": "^5.2",
+        "ramsey/uuid-doctrine": "^1.8",
         "symfony/config": "^4.3",
         "symfony/dependency-injection": "^4.3",
         "symfony/framework-bundle": "^4.3",
+        "symfony/security-bundle": "^4.4",
         "symfony/serializer": "^4.3"
     },
     "require-dev": {
