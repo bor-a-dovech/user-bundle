@@ -126,6 +126,10 @@ class User implements UserInterface
      */
     private $phone = null;
 
+    public function __toString()
+    {
+        return $this->getFio() ? : $this->getUsername();
+    }
     ///
     /// геттеры и сеттеры
     ///

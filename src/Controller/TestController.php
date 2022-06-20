@@ -28,8 +28,7 @@ class TestController extends AbstractController
      */
     public function profile()
     {
-        dump('profiled');
-        die();
+        return $this->redirectToRoute('user_list');
     }
 
     /**
