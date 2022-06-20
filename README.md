@@ -115,6 +115,11 @@ php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
  ```
 
+Создание таблицы с сессиями пользователей (в миграциях этой таблицы нет):
+ ```bash
+php bin/console app:create-session-table
+ ```
+
 Применение фикстур:
  ```bash
 php bin/console app:load-user-fixtures

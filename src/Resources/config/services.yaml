@@ -60,3 +60,13 @@ services:
         tags: ['knp_menu.provider']
     Glavnivc\UserBundle\Event\Listener\Menu\UserListener:
         tags: [{ name: kernel.event_listener, event: 'app.menu.user.list', method: onMenu }]
+
+    # работа с сессиями
+    session.handler.pdo:
+        alias: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        arguments:
+            - '%env(DATABASE_URL)%'
+            - { lock_mode: 0, db_table: 'session' }
