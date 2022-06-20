@@ -107,11 +107,11 @@ framework:
 
 Создание миграции:
 ```bash
-php bin/console make:migration
+php bin/console doctrine:migrations:diff
 ```
+
 Правка и выполнение созданного файла миграции:
  ```bash
-php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
  ```
 

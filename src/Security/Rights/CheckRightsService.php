@@ -34,7 +34,7 @@ class CheckRightsService implements CheckRightsServiceInterface
         if ($isSuperAdmin) {
             return true;
         }
-        return isset($userPermissions[$permissionName]);
+        return isset($permissionsText[$permissionName]);
     }
 
 
