@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle;
+namespace Pantheon\UserBundle;
 
-use Glavnivc\UserBundle\DependencyInjection\UserBundleExtension;
+use Pantheon\UserBundle\DependencyInjection\UserBundleExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class UserBundle extends Bundle

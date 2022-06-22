@@ -1,9 +1,9 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\Rights;
+namespace Pantheon\UserBundle\Security\Rights;
 
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Service\UserRightsService;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Service\UserRightsService;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 //abstract

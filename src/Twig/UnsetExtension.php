@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Twig;
+namespace Pantheon\UserBundle\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;

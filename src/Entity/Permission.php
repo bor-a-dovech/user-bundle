@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Entity;
+namespace Pantheon\UserBundle\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="permission")
- * @ORM\Entity(repositoryClass="Glavnivc\UserBundle\Repository\PermissionRepository")
+ * @ORM\Entity(repositoryClass="Pantheon\UserBundle\Repository\PermissionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Permission

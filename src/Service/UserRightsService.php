@@ -1,10 +1,10 @@
 <?php
 
-namespace Glavnivc\UserBundle\Service;
+namespace Pantheon\UserBundle\Service;
 
-use Glavnivc\UserBundle\Entity\Permission;
-use Glavnivc\UserBundle\Entity\Role;
-use Glavnivc\UserBundle\Entity\User;
+use Pantheon\UserBundle\Entity\Permission;
+use Pantheon\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Entity\User;
 
 /**
  * Класс, который возвращает роли и пермишны пользователя.

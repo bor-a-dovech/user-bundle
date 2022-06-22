@@ -1,12 +1,12 @@
 <?php
 
-namespace Glavnivc\UserBundle\Provider;
+namespace Pantheon\UserBundle\Provider;
 
 use InvalidArgumentException;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
-use Glavnivc\UserBundle\Event\MenuEvent;
+use Pantheon\UserBundle\Event\MenuEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**

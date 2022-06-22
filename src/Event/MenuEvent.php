@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Event;
+namespace Pantheon\UserBundle\Event;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle\Normalizer;
+namespace Pantheon\UserBundle\Normalizer;
 
-use Glavnivc\UserBundle\Entity\User;
+use Pantheon\UserBundle\Entity\User;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class UserNormalizer implements NormalizerInterface

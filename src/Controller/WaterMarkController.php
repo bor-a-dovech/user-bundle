@@ -1,10 +1,10 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller;
+namespace Pantheon\UserBundle\Controller;
 
-use Glavnivc\UserBundle\Service\DirService;
-use Glavnivc\UserBundle\Service\FileService;
-use Glavnivc\UserBundle\Service\StringService;
+use Pantheon\UserBundle\Service\DirService;
+use Pantheon\UserBundle\Service\FileService;
+use Pantheon\UserBundle\Service\StringService;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

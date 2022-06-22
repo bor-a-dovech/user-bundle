@@ -1,9 +1,9 @@
 <?php
 
-namespace Glavnivc\UserBundle\Form\Type;
+namespace Pantheon\UserBundle\Form\Type;
 
-use Glavnivc\UserBundle\Entity\Role;
-use Glavnivc\UserBundle\Repository\PermissionRepository;
+use Pantheon\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Repository\PermissionRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

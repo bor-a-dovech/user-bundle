@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security;
+namespace Pantheon\UserBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

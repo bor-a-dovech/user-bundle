@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle\Event\Listener\Menu;
+namespace Pantheon\UserBundle\Event\Listener\Menu;
 
-use Glavnivc\UserBundle\Event\MenuEvent;
+use Pantheon\UserBundle\Event\MenuEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Security;
 

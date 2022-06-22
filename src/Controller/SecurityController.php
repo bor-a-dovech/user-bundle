@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Glavnivc\UserBundle\Controller;
+namespace Pantheon\UserBundle\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

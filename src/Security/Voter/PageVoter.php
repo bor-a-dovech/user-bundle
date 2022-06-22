@@ -1,10 +1,10 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\Voter;
+namespace Pantheon\UserBundle\Security\Voter;
 
 
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Security\Rights\CheckRightsServiceInterface;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Security\Rights\CheckRightsServiceInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;

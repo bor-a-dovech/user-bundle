@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle\Normalizer;
+namespace Pantheon\UserBundle\Normalizer;
 
-use Glavnivc\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Entity\Role;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class RoleNormalizer implements NormalizerInterface

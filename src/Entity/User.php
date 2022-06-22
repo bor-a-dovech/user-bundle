@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Entity;
+namespace Pantheon\UserBundle\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\Collection;
@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * TODO: здесь нет имени, фамилии и данных профиля - упрощенный вариант
  *
  * @ORM\Table(name="`user`")
- * @ORM\Entity(repositoryClass="Glavnivc\UserBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="Pantheon\UserBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface

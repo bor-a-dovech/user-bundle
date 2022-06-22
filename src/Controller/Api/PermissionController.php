@@ -1,13 +1,13 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller\Api;
+namespace Pantheon\UserBundle\Controller\Api;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Glavnivc\UserBundle\Entity\Permission;
-use Glavnivc\UserBundle\Normalizer\PermissionNormalizer;
-use Glavnivc\UserBundle\Repository\PermissionRepository;
-use Glavnivc\UserBundle\Repository\UserRepository;
-use Glavnivc\UserBundle\Service\ResultJsonService;
+use Pantheon\UserBundle\Entity\Permission;
+use Pantheon\UserBundle\Normalizer\PermissionNormalizer;
+use Pantheon\UserBundle\Repository\PermissionRepository;
+use Pantheon\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\Service\ResultJsonService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

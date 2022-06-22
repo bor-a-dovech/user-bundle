@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Glavnivc\UserBundle\Security\Permission\Service;
+namespace Pantheon\UserBundle\Security\Permission\Service;
 
-use Glavnivc\UserBundle\Security\Credentials\CheckCredentialsServiceInterface;
-use Glavnivc\UserBundle\Security\Permission\Provider\PermissionProviderInterface;
+use Pantheon\UserBundle\Security\Credentials\CheckCredentialsServiceInterface;
+use Pantheon\UserBundle\Security\Permission\Provider\PermissionProviderInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\Cache\CacheInterface;

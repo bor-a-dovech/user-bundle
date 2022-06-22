@@ -1,15 +1,15 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller\Api;
+namespace Pantheon\UserBundle\Controller\Api;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Normalizer\RoleNormalizer;
-use Glavnivc\UserBundle\Repository\RoleRepository;
-use Glavnivc\UserBundle\Repository\UserRepository;
-use Glavnivc\UserBundle\Service\ResultJsonService;
-use Glavnivc\UserBundle\Service\StringService;
-use Glavnivc\UserBundle\Service\UserRightsService;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Normalizer\RoleNormalizer;
+use Pantheon\UserBundle\Repository\RoleRepository;
+use Pantheon\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\Service\ResultJsonService;
+use Pantheon\UserBundle\Service\StringService;
+use Pantheon\UserBundle\Service\UserRightsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;

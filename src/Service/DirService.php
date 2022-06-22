@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Service;
+namespace Pantheon\UserBundle\Service;
 
 /**
  * Сервис, который работает с директориями.

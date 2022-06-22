@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\Credentials;
+namespace Pantheon\UserBundle\Security\Credentials;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;

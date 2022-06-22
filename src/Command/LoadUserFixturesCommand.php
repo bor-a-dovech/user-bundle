@@ -1,14 +1,14 @@
 <?php
 
-namespace Glavnivc\UserBundle\Command;
+namespace Pantheon\UserBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Glavnivc\UserBundle\Entity\Permission;
-use Glavnivc\UserBundle\Entity\Role;
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Repository\PermissionRepository;
-use Glavnivc\UserBundle\Repository\RoleRepository;
-use Glavnivc\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\Entity\Permission;
+use Pantheon\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Repository\PermissionRepository;
+use Pantheon\UserBundle\Repository\RoleRepository;
+use Pantheon\UserBundle\Repository\UserRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

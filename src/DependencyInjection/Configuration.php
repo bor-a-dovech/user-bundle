@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\DependencyInjection;
+namespace Pantheon\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\Rights;
+namespace Pantheon\UserBundle\Security\Rights;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

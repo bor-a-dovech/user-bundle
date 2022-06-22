@@ -1,16 +1,16 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller\Web;
+namespace Pantheon\UserBundle\Controller\Web;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\PersistentCollection;
-use Glavnivc\UserBundle\Entity\Role;
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Form\Type\UserType;
-use Glavnivc\UserBundle\Repository\RoleRepository;
-use Glavnivc\UserBundle\Repository\UserRepository;
-use Glavnivc\UserBundle\Service\UserRightsService;
+use Pantheon\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Form\Type\UserType;
+use Pantheon\UserBundle\Repository\RoleRepository;
+use Pantheon\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\Service\UserRightsService;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

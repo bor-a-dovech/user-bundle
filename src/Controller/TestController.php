@@ -1,10 +1,10 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller;
+namespace Pantheon\UserBundle\Controller;
 
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Repository\UserRepository;
-use Glavnivc\UserBundle\UserBundle;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\UserBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

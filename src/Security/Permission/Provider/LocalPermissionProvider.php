@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\Permission\Provider;
+namespace Pantheon\UserBundle\Security\Permission\Provider;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Psr\Log\LoggerInterface;

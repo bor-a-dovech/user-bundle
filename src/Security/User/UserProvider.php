@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\User;
+namespace Pantheon\UserBundle\Security\User;
 
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;

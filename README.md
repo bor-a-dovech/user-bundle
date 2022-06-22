@@ -39,7 +39,7 @@ doctrine:
       user_bundle:
         type: annotation
         is_bundle: false
-        prefix: 'Glavnivc\UserBundle\Entity'
+        prefix: 'Pantheon\UserBundle\Entity'
         dir: "%kernel.root_dir%/../vendor/bor-a-dovech/user-bundle/src/Entity"
         alias: NewsTop
 ```
@@ -53,7 +53,7 @@ security:
         allow_if_all_abstain: false
         
     encoders:
-        Glavnivc\UserBundle\Entity\User:
+        Pantheon\UserBundle\Entity\User:
             algorithm: auto
 
     providers:
@@ -107,11 +107,11 @@ framework:
 
 Создание миграции:
 ```bash
-php bin/console doctrine:migrations:diff
+php bin/console make:migration
 ```
-
 Правка и выполнение созданного файла миграции:
  ```bash
+php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
  ```
 

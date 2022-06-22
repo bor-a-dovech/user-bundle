@@ -1,13 +1,13 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller\Api;
+namespace Pantheon\UserBundle\Controller\Api;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Glavnivc\UserBundle\Entity\Role;
-use Glavnivc\UserBundle\Normalizer\RoleNormalizer;
-use Glavnivc\UserBundle\Repository\RoleRepository;
-use Glavnivc\UserBundle\Repository\UserRepository;
-use Glavnivc\UserBundle\Service\ResultJsonService;
+use Pantheon\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Normalizer\RoleNormalizer;
+use Pantheon\UserBundle\Repository\RoleRepository;
+use Pantheon\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\Service\ResultJsonService;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Util\Json;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;

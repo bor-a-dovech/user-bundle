@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle\Form\Type;
+namespace Pantheon\UserBundle\Form\Type;
 
-use Glavnivc\UserBundle\Entity\Permission;
+use Pantheon\UserBundle\Entity\Permission;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;

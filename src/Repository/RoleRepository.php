@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle\Repository;
+namespace Pantheon\UserBundle\Repository;
 
-use Glavnivc\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Entity\Role;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 

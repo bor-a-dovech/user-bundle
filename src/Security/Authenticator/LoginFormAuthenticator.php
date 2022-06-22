@@ -1,6 +1,6 @@
 <?php
 
-namespace Glavnivc\UserBundle\Security\Authenticator;
+namespace Pantheon\UserBundle\Security\Authenticator;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;

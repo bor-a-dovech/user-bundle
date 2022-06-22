@@ -1,11 +1,11 @@
 <?php
 
-namespace Glavnivc\UserBundle\Form\Type;
+namespace Pantheon\UserBundle\Form\Type;
 
-use Glavnivc\UserBundle\Entity\Role;
-use Glavnivc\UserBundle\Entity\User;
-use Glavnivc\UserBundle\Repository\PermissionRepository;
-use Glavnivc\UserBundle\Repository\RoleRepository;
+use Pantheon\UserBundle\Entity\Role;
+use Pantheon\UserBundle\Entity\User;
+use Pantheon\UserBundle\Repository\PermissionRepository;
+use Pantheon\UserBundle\Repository\RoleRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;

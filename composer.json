@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Glavnivc\\UserBundle\\": "src/"
+            "Pantheon\\UserBundle\\": "src/"
         }
     }
 }

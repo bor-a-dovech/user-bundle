@@ -1,8 +1,8 @@
 <?php
 
-namespace Glavnivc\UserBundle\Normalizer;
+namespace Pantheon\UserBundle\Normalizer;
 
-use Glavnivc\UserBundle\Entity\Permission;
+use Pantheon\UserBundle\Entity\Permission;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class PermissionNormalizer implements NormalizerInterface

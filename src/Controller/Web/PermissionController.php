@@ -1,12 +1,12 @@
 <?php
 
-namespace Glavnivc\UserBundle\Controller\Web;
+namespace Pantheon\UserBundle\Controller\Web;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Glavnivc\UserBundle\Entity\Permission;
-use Glavnivc\UserBundle\Form\Type\PermissionType;
-use Glavnivc\UserBundle\Repository\PermissionRepository;
-use Glavnivc\UserBundle\Repository\UserRepository;
+use Pantheon\UserBundle\Entity\Permission;
+use Pantheon\UserBundle\Form\Type\PermissionType;
+use Pantheon\UserBundle\Repository\PermissionRepository;
+use Pantheon\UserBundle\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
