@@ -5,7 +5,6 @@
     "license": "proprietary",
     "require": {
         "php": "^7.3",
-        "guzzlehttp/guzzle": "^7.4",
         "knplabs/knp-menu-bundle": "^3.2",
         "knplabs/knp-paginator-bundle": "^5.2",
         "ramsey/uuid-doctrine": "^1.8",
